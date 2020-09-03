@@ -1,0 +1,42 @@
+<link href="//cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma/bulma.css" rel="stylesheet">
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@9/dist/sweetalert2.min.js"></script>
+<script src="sweetalert2/dist/sweetalert2.min.js"></script>
+<script
+		src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+		integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+		crossorigin="anonymous"></script>
+<script src="js/gerente.js"></script>
+<h2>Os meus dados</h2>
+<div id="listaFuncionarios" class="listaRegistros"></div>
+<div id="modalEditaFuncionario" class="modalEditar">
+	<form name="frmEditaFuncionario" id="editaFuncionario" class="frmEditar">
+		<table>
+			<tr>
+				<th>Nome</th>
+				<td><input type="text" name="nome"></td>
+			</tr>
+			<tr>
+			<th>Email</th>
+				<td><input type="email" name="email"></td>
+			</tr>
+		</table>
+		<input type="hidden" name="idFuncionario">
+	</form>
+</div>
+<div id="modalEditaFuncionarioSenha" class="modalEditar">
+	<form name="frmEditaFuncionarioSenha" id="editaFuncionarioSenha" class="frmEditar">
+		<table>
+			<tr>
+				<th>Senha nova</th>
+				<td><input type="password" name="senhaNova"></td>
+			</tr>
+			<tr>
+			<th>Repete a senha</th>
+				<td><input type="password" name="senhaRep"></td>
+			</tr>
+		</table>
+		<input type="hidden" name="idFuncionarioSenha">
+	</form>
+</div>
+<div id="modalAviso"></div>
+

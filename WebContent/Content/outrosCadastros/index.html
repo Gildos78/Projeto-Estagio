@@ -1,0 +1,112 @@
+<meta charset="UTF-8">
+<link href="//cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma/bulma.css"
+	rel="stylesheet">
+<script
+	src="//cdn.jsdelivr.net/npm/sweetalert2@9/dist/sweetalert2.min.js"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+	integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+	crossorigin="anonymous"></script>
+<script src="js/admin.js"></script>
+<script src="js/insert.js"></script>
+<link rel="stylesheet" href="css/insert.css">
+<script src="js/cadOperacao.js"></script>
+<script src="js/cadMaquina.js"></script>
+<h2>Cadastros</h2>
+
+<div class="tab">
+	<button class="tablinks" onclick="openButton(event, 'insOper')"><i class="fa fa-plus-circle" aria-hidden="true"></i> Cadastrar operação</button>
+	<button class="tablinks" onclick="openButton(event, 'opCad')"><i class="fa fa-list" aria-hidden="true"></i> Operações cadastradas</button>
+	<button class="tablinks" onclick="openButton(event, 'insMaq')"><i class="fa fa-plus-circle" aria-hidden="true"></i> Cadastrar  máquina</button>
+	<button class="tablinks" onclick="openButton(event, 'maqCad')"><i class="fa fa-list" aria-hidden="true"></i> Máquinas cadastradas</button>
+</div>
+
+<div id="insOper" class="tabcontent">
+	<form name="frmAddCadOperacao" id="addCadOperacao" class="frmInserir">
+		<fieldset>
+			<legend>Cadastrar operação</legend>
+			<table>
+				<tr>
+
+					<td><input type="text" class="operacao"
+						placeholder="Ex:Usinagem" name="operacao" id="operacao"></td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<button type="button" onclick="SENAI.cadOperacao.cadastrar()">Cadastrar</button>
+						<button type="reset">Limpar</button>
+					</td>
+				</tr>
+			</table>
+		</fieldset>
+	</form>
+</div>
+
+<div id="opCad" class="tabcontent">
+	<form id="filtraCadOperacao" class="frmFiltrar">
+		<fieldset>
+			<legend>Filtrar</legend>
+			<input type="text" name="txtbusca" id="campoBusca"
+				onkeyup="SENAI.cadOperacao.buscar()"
+				placeholder="Pesquise pela matricula">
+		</fieldset>
+	</form>
+	<div id="listaCadOperacoes" class="listaRegistrosCad"></div>
+	<div id="modalEditaCadOperacao" class="modalEditar">
+		<form name="frmEditaCadOperacao" id="editaCadOperacao"
+			class="frmEditar">
+			<table>
+				<tr>
+					<th>Nome</th>
+					<td><input type="text" name="operacao"></td>
+				</tr>
+
+			</table>
+			<input type="hidden" name="idCadOperacao">
+		</form>
+	</div>
+</div>
+
+<div id="insMaq" class="tabcontent">
+	<form name="frmAddCadMaquina" id="addCadMaquina" class="frmInserir">
+		<fieldset>
+			<legend>Cadastrar máquina</legend>
+			<table>
+				<tr>
+
+					<td><input type="text" class="maquina"
+						placeholder="Ex:Maquina" name="maquina" id="maquina"></td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<button type="button" onclick="SENAI.cadMaquina.cadastrar()">Cadastrar</button>
+						<button type="reset">Limpar</button>
+					</td>
+				</tr>
+			</table>
+		</fieldset>
+	</form>
+</div>
+<div id="maqCad" class="tabcontent">
+		<form id="filtraCadMaquina" class="frmFiltrar">
+		<fieldset>
+			<legend>Filtrar</legend>
+			<input type="text" name="txtbusca" id="campoBusca"
+				onkeyup="SENAI.cadMaquina.buscar()" placeholder="Pesquise pelo nome">
+		</fieldset>
+	</form>
+	<div id="listaCadMaquinas" class="listaRegistrosCad"></div>
+	<div id="modalEditaCadMaquina" class="modalEditar">
+		<form name="frmEditaCadMaquina" id="editaCadMaquina" class="frmEditar">
+			<table>
+				<tr>
+					<th>Nome</th>
+					<td><input type="text" name="maquina"></td>
+				</tr>
+
+			</table>
+			<input type="hidden" name="idCadMaquina">
+		</form>
+	</div>
+</div>
+

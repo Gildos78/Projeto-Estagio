@@ -1,0 +1,110 @@
+<meta charset="UTF-8">
+<link href="//cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma/bulma.css"
+	rel="stylesheet">
+<script
+	src="//cdn.jsdelivr.net/npm/sweetalert2@9/dist/sweetalert2.min.js"></script>
+<script src="sweetalert2/dist/sweetalert2.min.js"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+	integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+	crossorigin="anonymous"></script>
+<script src="js/limites.js"></script>
+<script src="js/colaborador.js"></script>
+<link rel="stylesheet" href="css/insert.css">
+<script src="js/insert.js"></script>
+<h2>Cadastro de funcionários</h2>
+
+<div class="tab">
+	<button class="tablinks" onclick="openButton(event, 'cadFun')"><i class="fa fa-plus-circle" aria-hidden="true"></i> Cadastrar funcionário</button>
+	<button class="tablinks" onclick="openButton(event, 'funCad')"><i class="fa fa-list" aria-hidden="true"></i> Funcionários cadastrados</button>
+</div>
+
+<div id="cadFun" class="tabcontent">
+	<form name="frmAddColaborador" id="addColaborador" class="frmInserir">
+		<fieldset>
+			<legend>Novo funcionario</legend>
+			<table>
+				<tr>
+					<th>Nome</th>
+					<td><input type="text" class="nomeCol" placeholder="Nome"
+						name="nome" id="nome"></td>
+				</tr>
+				<tr>
+					<th>Matr&iacutecula</th>
+					<td><input type="text" class="matCol" placeholder="6 digitos"
+						name="matricula" id="matricula"></td>
+				</tr>
+				<tr>
+					<th>Senha</th>
+					<td><input type="password" class="senhaCol"
+						placeholder="Senha" name="senhaCol" id="senhaCol"></td>
+				</tr>
+				<tr>
+					<th>Repete a senha</th>
+					<td><input type="password" class="senhaRepCol"
+						placeholder="Senha" name="senhaRepCol" id="senhaRepCol"></td>
+				</tr>
+				<tr>
+					<th>Telefone</th>
+					<td><input type="text" name="foneCol"
+						placeholder="(47)00000-0000" name="foneCol" id="foneCol"></td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<button type="button" onclick="validaCampos()">Cadastrar</button>
+						<button type="reset">Limpar</button>
+					</td>
+				</tr>
+			</table>
+		</fieldset>
+	</form>
+</div>
+
+<div id="funCad" class="tabcontent">
+	<form id="filtraColaboradores" class="frmFiltrar">
+		<fieldset>
+			<legend>Filtrar</legend>
+			<input type="text" name="txtbusca" id="campoBusca" onkeyup="SENAI.colaborador.buscar()"
+				placeholder="Pesquise pela matricula">
+		</fieldset>
+	</form>
+	<div id="listaColaboradores" class="listaRegistros"></div>
+	<div id="modalEditaColaborador" class="modalEditar">
+		<form name="frmEditaColaborador" id="editaColaborador"
+			class="frmEditar">
+			<table>
+				<tr>
+					<th>Nome</th>
+					<td><input type="text" name="nome"></td>
+				</tr>
+				<tr>
+					<th>Matricula</th>
+					<td><input type="text" name="matricula"></td>
+				</tr>
+				<tr>
+					<th>Telefone</th>
+					<td><input type="text" name="foneCol"></td>
+				</tr>
+			</table>
+			<input type="hidden" name="idColaborador">
+		</form>
+	</div>
+	<div id="modalEditaColaboradorSenha" class="modalEditar">
+		<form name="frmEditaColaboradorSenha" id="editaColaboradorSenha"
+			class="frmEditar">
+			<table>
+				<tr>
+					<th>Nova Senha</th>
+					<td><input type="password" name="senhaNova"></td>
+				</tr>
+				<tr>
+					<th>Repete a senha</th>
+					<td><input type="password" name="senhaRep"></td>
+				</tr>
+			</table>
+			<input type="hidden" name="idColaboradorSenha">
+		</form>
+	</div>
+</div>
+<div id="modalAviso"></div>
+

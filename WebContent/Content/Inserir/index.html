@@ -1,0 +1,198 @@
+
+<meta charset="UTF-8">
+<link href="//cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma/bulma.css"
+	rel="stylesheet">
+<script
+	src="//cdn.jsdelivr.net/npm/sweetalert2@9/dist/sweetalert2.min.js"></script>
+<script src="sweetalert2/dist/sweetalert2.min.js"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+	integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+	crossorigin="anonymous"></script>
+
+<script src="js/leituras.js"></script>
+<script src="js/producao.js"></script>
+
+<link rel="stylesheet" href="css/insert.css">
+<link rel="stylesheet" href="css/index.css">
+<script src="js/insert.js"></script>
+<h2>Cadastro de ordens de produção</h2>
+
+<div class="tab">
+	<button class="tablinks" onclick="openButton(event, 'insQtd')">
+		<i class="fa fa-plus-circle" aria-hidden="true"></i> Produção de
+		amostras
+	</button>
+	<button class="tablinks" onclick="openButton(event, 'verH')">
+		<i class="fa fa-list" aria-hidden="true"></i> Cadastro de produção
+	</button>
+	
+	<button class="tablinks" onclick="openButton(event, 'verHL')">
+		<i class="fa fa-list" aria-hidden="true"></i> Cadastro de leituras
+	</button>
+</div>
+
+<div id="insQtd" class="tabcontent">
+	<form name="frmLimitesProd" id="addCadProducao"
+		class=frmInserirProd>
+		<fieldset>
+			<legend>Produção de amostras: </legend>
+			<table>
+				<tr>
+					<th><label for="cliente">Cliente:</label></th>
+					<td><input type="text" name="cliente" id="cliente"></td>
+					<th><label for="cliente">Ordem de produção:</label></th>
+					<td><input  type="text" name="ordemP" id="ordemP"></td>
+				</tr>
+				<tr>
+					<th><label for="dataI">Data inicial:</label></th>
+					<td><input type="datetime-local" name="txtnm" id="dataI"></td>
+					<th><label for="dataF">Data final:</label></th>
+					<td><input type="datetime-local" name="txtnm" id="dataF"></td>
+				</tr>
+				<tr>
+					<th><label for="descricao">Descrição da peça:</label></th>
+					<td><textarea name="descricao" id="descricao"></textarea></td>
+					<th><label for="qtdAm">Número de amostras:</label></th>
+					<td><input type="number" name="qtdAmostras" id="qtdAmostras"></td>
+				</tr>
+				<tr>
+					<th><label for="espMin">Especificação Mínima:</label></th>
+					<td><input type="number" name="espMin" id="espMin"></td>
+					<th><label for="espMax">Especificação Máxima:</label></th>
+					<td><input type="number" name="espMax" id="espMax"></td>
+				</tr>
+				<tr>
+
+					<th>Máquina:</th>
+					<td><select name="maquinaId" id="selMaquina">
+							<option value="." class="buscando">Aguarde, buscando
+								máquinas...</option>
+					</select></td>
+
+					<th>Operação:</th>
+					<td><select name="operacaoId" id="selOperacao">
+							<option value="" class="buscando">Aguarde, buscando
+								operações...</option>
+					</select></td>
+				</tr>
+				<tr>
+					<th><label for="subgrupo">Subgrupo: </label></th>
+					<td><select name="subgrupo" id="subgrupo">
+							<option value="">Escolha</option>
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
+							<option value="6">6</option>
+							<option value="7">7</option>
+							<option value="8">8</option>
+							<option value="9">9</option>
+							<option value="10">10</option>
+					</select></td>
+				</tr>
+				<tr>
+					<td colspan="4">
+						<button type="button"  onclick="SENAI.producao.cadastrar()">Cadastrar</button>
+						<button type="reset">Limpar</button>
+					</td>
+				</tr>
+			</table>
+		</fieldset>
+	</form>
+</div>
+<div id="verH" class="tabcontent">
+	<form id="filtraProducao" class="frmFiltrar">
+		<fieldset>
+			<legend>Filtrar</legend>
+			<input type="text" name="txtbusca" id="campoBusca" onkeyup="SENAI.producao.buscar()"
+				placeholder="Pesquise pelo cliente">
+		</fieldset>
+	</form>
+	<div id="listaProducoes" class="listaRegistros"></div>
+</div>
+<div id="insLei" class="tabcontent">
+	<form name="frmLimitesLeit" id="addCadLeituras"
+		class=frmInserirLei>
+		<fieldset>
+			<legend>Leituras: </legend>
+			<table>	
+				<tr>
+					<th>Produção:</th>
+					<td><a id="selProducao"></a></td>
+					
+				</tr>
+				<tr>
+					<th>Operador:</th>
+					<td><select name="operadorId" id="selOperador">
+							<option value="" class="buscando">Aguarde, buscando
+								operadores...</option>
+					</select></td>
+				</tr>
+				<tr>
+					<th><label for="valor">Valor:</label></th>
+					<td><input type="number" name="valor" id="valor"></td>
+				</tr>
+				<tr>
+					<th><label for="data">Data:</label></th>
+					<td><input type="datetime-local" name="data" id="data"></td>
+				</tr>
+				<tr>
+					<th><label for="obs">Observação:</label></th>
+					<td><textarea name="obs" id="obs"></textarea></td>
+				</tr>
+				<tr>
+					<td colspan="4">
+						<button type="button"  onclick="SENAI.leituras.buscarCod()">Cadastrar</button>
+						<button type="reset">Limpar</button>
+					</td>
+				</tr>
+			</table>
+		</fieldset>
+	</form>
+</div>
+<div id="verHL" class="tabcontent">
+	<form id="filtraLeituras" class="frmFiltrar">
+		<fieldset>
+			<legend>Filtrar</legend>
+			<input type="text" name="txtbusca" id="campoBuscaP" onkeyup="SENAI.leituras.buscar()"
+				placeholder="Ordem de produção">
+		</fieldset>
+	</form>
+	<div id="listaLeituras" class="listaRegistros"></div>
+	<div id="modalEditaLeituras" class="modalEditar">
+		<form name="frmEditaLeituras" id="editaLeituras"
+			class="frmEditar">
+			<table>	
+				<tr>
+					<th>Produção:</th>
+					<td><select name="producaoId" id="selProducao">
+							<option value="." class="buscando">Aguarde, buscando
+								produções...</option>
+					</select></td>
+				</tr>
+				<tr>
+					<th>Operador:</th>
+					<td><select name="operadorId" id="selOperador">
+							<option value="" class="buscando">Aguarde, buscando
+								operadores...</option>
+					</select></td>
+				</tr>
+				<tr>
+					<th><label for="valor">Valor:</label></th>
+					<td><input type="number" name="valor" id="valor"></td>
+				</tr>
+				<tr>
+					<th><label for="data">Data:</label></th>
+					<td><input type="datetime-local" name="data" id="data"></td>
+				</tr>
+				<tr>
+					<th><label for="obs">Observação:</label></th>
+					<td><input type="text" name="obs" id="obs"></td>
+				</tr>
+			</table>
+			<input type="hidden" name="idColaborador">
+		</form>
+	</div>
+</div>

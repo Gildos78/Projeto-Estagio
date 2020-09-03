@@ -1,0 +1,75 @@
+<meta charset="UTF-8">
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+<link href="//cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma/bulma.css"
+	rel="stylesheet">
+<script
+	src="//cdn.jsdelivr.net/npm/sweetalert2@9/dist/sweetalert2.min.js"></script>
+<script src="sweetalert2/dist/sweetalert2.min.js"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+	integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+	crossorigin="anonymous"></script>
+
+
+
+<script src="js/desempenho.js"></script>
+
+<link rel="stylesheet" href="css/insert.css">
+<link rel="stylesheet" href="css/index.css">
+<script src="js/insert.js"></script>
+<div class="tab">
+	<button class="tablinks" onclick="openButton(event, 'desempenho')">
+		<i class="fa fa-plus-circle" aria-hidden="true"></i> Desempenho
+	</button>
+</div>
+<div id="teste">
+	<div id="desempenho" class="tabcontent active">
+		<h2>Desempenho</h2>
+		<div>
+			<form name="frmFiltraProd" id="filtraProducao" class="frmFiltrar">
+				<fieldset>
+					<legend>Filtrar</legend>
+					<table>
+						<tr>
+							<td><input type="text" name="txtbusca" id="campoBusca"
+								class="campoBusca" onkeyup="SENAI.producao.buscarDes()"
+								placeholder="Cliente ou Ordem de Produção"></td>
+						</tr>
+						<tr>
+							<td><label for="dataI">Data inicial:</label> <input
+								type="datetime-local" name="datainicial" id="dataI"
+								class="dataI"></td>
+						</tr>
+
+						<tr>
+							<td><label for="dataF">Data final:</label> <input
+								type="datetime-local" name="datafinal" id="dataF" class="dataF"></td>
+						</tr>
+						<tr>
+							<td><button type="button"
+									onclick="SENAI.producao.buscarData()">Pesquisar Data</button></td>
+						</tr>
+					</table>
+				</fieldset>
+			</form>
+			<div id="listaProducoesD" class="listaRegistros"></div>
+		</div>
+	</div>
+</div>
+<div id="detalhes" class="tabcontent">
+	<h2>
+		Detalhes - <span id="costumer">xx</span>
+	</h2>
+	<h3>Tabela de leituras</h3>
+	<div>
+		<div id="listaLeiturasDetails" class="listaRegistros"></div>
+		<h3>Gráfico de leituras</h3>
+		<canvas class="line-chart"></canvas>
+		<h3>Gráfico MédiaX</h3>
+		<canvas class="line-chart1"></canvas>
+		<h3>Gráfico Amplitude</h3>
+		<canvas class="line-chart2"></canvas>
+	</div>
+</div>
+
